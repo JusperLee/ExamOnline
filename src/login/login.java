@@ -68,13 +68,13 @@ public class login extends HttpServlet {
 		Manager ma = null;
 		int r =0;
 		try {
-			if(yan.equals(yan1)) {
+/*			if(yan.equals(yan1)) {*/
 				System.out.println("即将进行登录检测");
 				stu = service.login(uname, upsw,tel);
 				te = tea.login(uname, upsw,tel);
 				ma = man.login(uname, upsw,tel);
-				System.out.println("登录检测完毕，即将跳转");
-			}
+/*				System.out.println("登录检测完毕，即将跳转");
+			}*/
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

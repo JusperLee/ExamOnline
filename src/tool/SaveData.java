@@ -18,6 +18,7 @@ public class SaveData{
 		ReadExcel xlsMain = new ReadExcel();
 		System.out.println(path);
 		if(questiontype == 1) {
+			System.out.println(1);
 			Xzt xzt = null;
 			List<Xzt> list = xlsMain.readExcelxzt(path);
 	

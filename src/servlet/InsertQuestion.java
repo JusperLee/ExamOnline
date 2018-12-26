@@ -1,6 +1,8 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -116,7 +118,11 @@ System.out.println(answer);
 		 * 批量逻辑组
 		 */
 		SmartUpload su = new SmartUpload();
-		
+		String filePath = getServletContext().getRealPath("\\") + "\\upload\\";
+		File file = new File(filePath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
 		PageContext pageContext=JspFactory.getDefaultFactory().getPageContext(this, request, response, null, true, 8192, true);
 		// 初始化
 		su.initialize(pageContext);
@@ -141,9 +147,9 @@ System.out.println(answer);
 		SmartFile sf = sfs.getFile(0);
 		try {
 			//String fname = sf.getFileName();
-			System.out.println(a + "   >>>>>>>" + sf.getFileName());
+			System.out.println(filePath+sf.getFileName());
 			//sf.saveAs("/upload//"+sf.getFileName() ,1);
-			sf.saveAs("/upload//"+sf.getFileName() ,1);
+			sf.saveAs(filePath+sf.getFileName());
 		} catch (SmartUploadException e) {
 			e.printStackTrace();
 		}

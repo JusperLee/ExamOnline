@@ -1,6 +1,6 @@
 /**
  * @author likai
- * @parma Ê¹ÓÃApache POI ¶ÁÈ¡Excel
+ * @parma ä½¿ç”¨Apache POI è¯»å–Excel
  */
 package tool;
 
@@ -10,10 +10,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.poi.hssf.model.Workbook;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import bean.Bct;
 import bean.Tkt;
@@ -26,16 +28,20 @@ public class ReadExcel {
 		System.out.println(path);
 		InputStream is = new FileInputStream(path);
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
+
 		Xzt xzt = null;
 		List<Xzt> list = new ArrayList<Xzt>();
-		// Ñ­»·¹¤×÷±íSheet
+		// å¾ªç¯å·¥ä½œè¡¨Sheet
 		for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
 			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
+			
 			if (hssfSheet == null) {
 				continue;
 			}
-			// Ñ­»·ĞĞRow
+			System.out.println(hssfSheet);
+			// å¾ªç¯è¡ŒRow
 			for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
+				System.out.println(rowNum);
 				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 				if (hssfRow != null) {
 					xzt = new Xzt();
@@ -53,7 +59,7 @@ public class ReadExcel {
 					xzt.setOptionB(getValue(opB));
 					xzt.setOptionC(getValue(opC));
 					xzt.setOptionD(getValue(opD));
-					//Ñ¡ÔñÌâÖÖÀàÎª1
+					//é€‰æ‹©é¢˜ç§ç±»ä¸º1
 					xzt.setQuestiontype(1);
 					xzt.setQuestionpoint(getValue(questionpoint));
 					list.add(xzt);
@@ -68,13 +74,13 @@ public class ReadExcel {
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
 		Bct bct = null;
 		List<Bct> list = new ArrayList<Bct>();
-		// Ñ­»·¹¤×÷±íSheet
+		// å¾ªç¯å·¥ä½œè¡¨Sheet
 		for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
 			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
 			if (hssfSheet == null) {
 				continue;
 			}
-			// Ñ­»·ĞĞRow
+			// å¾ªç¯è¡ŒRow
 			for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
 				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 				if (hssfRow != null) {
@@ -82,7 +88,7 @@ public class ReadExcel {
 					HSSFCell question = hssfRow.getCell(0);
 					HSSFCell questionpoint = hssfRow.getCell(2);
 					bct.setQuestion(getValue(question));
-					//±à³ÌÌâÖÖÀàÎª3
+					//ç¼–ç¨‹é¢˜ç§ç±»ä¸º3
 					bct.setQuestiontype(1);
 					bct.setQuestionpoint(getValue(questionpoint));
 					list.add(bct);
@@ -97,13 +103,13 @@ public class ReadExcel {
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
 		Tkt tkt = null;
 		List<Tkt> list = new ArrayList<Tkt>();
-		// Ñ­»·¹¤×÷±íSheet
+		// å¾ªç¯å·¥ä½œè¡¨Sheet
 		for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
 			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
 			if (hssfSheet == null) {
 				continue;
 			}
-			// Ñ­»·ĞĞRow
+			// å¾ªç¯è¡ŒRow
 			for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
 				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
 				if (hssfRow != null) {
@@ -116,7 +122,7 @@ public class ReadExcel {
 					System.out.println("555   "+getValue(question));
 					tkt.setAnswer(getValue(answer));
 					System.out.println("666   "+getValue(answer));
-					//Ìî¿ÕÌâÖÖÀàÎª2
+					//å¡«ç©ºé¢˜ç§ç±»ä¸º2
 					tkt.setQuestiontype(2);
 					tkt.setQuestionpoint(getValue(questionpoint));
 					list.add(tkt);
@@ -129,13 +135,13 @@ public class ReadExcel {
 	 @SuppressWarnings("static-access")
 	private String getValue(HSSFCell hssfCell) {
 	        if (hssfCell.getCellType() == hssfCell.CELL_TYPE_BOOLEAN) {
-	            // ·µ»Ø²¼¶ûÀàĞÍµÄÖµ
+	            // è¿”å›å¸ƒå°”ç±»å‹çš„å€¼
 	            return String.valueOf(hssfCell.getBooleanCellValue());
 	        } else if (hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC) {
-	            // ·µ»ØÊıÖµÀàĞÍµÄÖµ
+	            // è¿”å›æ•°å€¼ç±»å‹çš„å€¼
 	            return String.valueOf(hssfCell.getNumericCellValue());
 	        } else {
-	            // ·µ»Ø×Ö·û´®ÀàĞÍµÄÖµ
+	            // è¿”å›å­—ç¬¦ä¸²ç±»å‹çš„å€¼
 	            return String.valueOf(hssfCell.getStringCellValue());
 	        }
 	    }

@@ -254,7 +254,8 @@ public boolean batchquestion(int questiontype,String filename,String path) {
 	if(questiontype == 1) {
 		try {
 			try {
-				sd.savexcel(path+"\\upload\\"+filename, 1);
+				sd.savexcel(path+"upload\\"+filename, 1);
+				System.out.println("path======="+path+"upload\\"+filename);
 				b = true;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -374,6 +375,9 @@ public PaperString showPaper(String papername) throws SQLException {
  * 选择题批分数
  */
 public Xzt showPaperbankxzt(int id) throws SQLException {
+	Connection con = DBUtil.getConnection();
+	PreparedStatement pst = null;
+	ResultSet rs = null;
 	Xzt xzt=new Xzt();
 	String sql = " select * from xzt where id=?";
 	pst=con.prepareStatement(sql);
@@ -399,6 +403,9 @@ public Xzt showPaperbankxzt(int id) throws SQLException {
  * 填空题改题
  */
 public Tkt showPaperbanktkt(int id) throws SQLException {
+	Connection con = DBUtil.getConnection();
+	PreparedStatement pst = null;
+	ResultSet rs = null;
 	Tkt tkt= null;
 	String sql = " select * from tkt where id=?";
 	pst=con.prepareStatement(sql);
@@ -420,6 +427,9 @@ public Tkt showPaperbanktkt(int id) throws SQLException {
  * 判断题批改
  */
 public Pdt showPaperbankpdt(int id) throws SQLException {
+	Connection con = DBUtil.getConnection();
+	PreparedStatement pst = null;
+	ResultSet rs = null;
 	Pdt pdt= new Pdt();
 	String sql = " select * from pdt where id=?";
 	pst=con.prepareStatement(sql);

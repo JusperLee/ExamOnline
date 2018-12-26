@@ -123,7 +123,7 @@ public class correct_paper extends HttpServlet {
 			for(int i=0;i<xztid.length;i++) {
 				Xzt x=null;
 				x=tc.showPaperbankxzt(xztid[i]);
-				if(xzt[i] ==x.getAnswer()) {
+				if(xzt[i].equals(x.getAnswer())) {
 					xzt_score+=4;
 				}
 				else {
@@ -137,7 +137,7 @@ public class correct_paper extends HttpServlet {
 			for(int i=0;i<tktid.length;i++) {
 				Tkt t=null;
 				t=tc.showPaperbanktkt(tktid[i]);
-				if(tkt[i]==t.getAnswer()) {
+				if(tkt[i].equals(t.getAnswer())) {
 					tkt_score+=4;
 				}
 				else {
@@ -152,7 +152,7 @@ public class correct_paper extends HttpServlet {
 				Pdt p=null;
 				p=tc.showPaperbankpdt(pdtid[i]);
 				System.out.println(pdt[i]+"       "+p.getAnswer());
-				if(pdt[i]==p.getAnswer()) {
+				if(pdt[i].equals(p.getAnswer())) {
 					pdt_score+=4;
 				}
 				else {

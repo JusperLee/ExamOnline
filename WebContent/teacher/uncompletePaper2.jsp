@@ -125,7 +125,7 @@
 				<div>
 				<p>一、简答题（一共2道题）</p>
 				<p>${index}、${sessionScope.stu_jdt_qu[0]}</p>
-				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}" value="${sessionScope.stu_jdt[0]}">${sessionScope.stu_jdt[0]}</textarea></p>
+				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}1" value="${sessionScope.stu_jdt[0]}">${sessionScope.stu_jdt[0]}</textarea></p>
 				<p>请输入分数：</p><input type="text" name="${index}"/>
 				<c:set value="${index+1}" var="index"></c:set>
 				</div>
@@ -133,7 +133,7 @@
 				<dd style="float: left;display: none; width: 100%;" index="${index}" id="${index}" name="${index}">
 				<div>
 				<p>${index}、${sessionScope.stu_jdt_qu[1]}</p>
-				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}" value="${sessionScope.stu_jdt[1]}">${sessionScope.stu_jdt[1]}</textarea></p>
+				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}1" value="${sessionScope.stu_jdt[1]}">${sessionScope.stu_jdt[1]}</textarea></p>
 				<p>请输入分数：</p><input type="text"  name="${index}"/>
 				<c:set value="${index+1}" var="index"></c:set>
 				</div>
@@ -145,7 +145,7 @@
 				<div>
 				<p>二、编程题（一共2道题）</p>
 				<p>${index}、${sessionScope.stu_bct_qu[0]}</p>
-				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}" value="${sessionScope.stu_bct[0]}">${sessionScope.stu_bct[0]}</textarea></p>
+				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}1" value="${sessionScope.stu_bct[0]}">${sessionScope.stu_bct[0]}</textarea></p>
 				<p>请输入分数：</p><input type="text"  name="${index}"/>
 				<c:set value="${index+1}" var="index"></c:set>
 				</div>
@@ -153,7 +153,7 @@
 				<dd style="float: left;display: none; width: 100%;" index="${index}" id="${index}" name="${index}">
 				<div>
 				<p>${index}、${sessionScope.stu_bct_qu[1]}</p>
-				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}" value="${sessionScope.stu_bct[1]}">${sessionScope.stu_bct[1]}</textarea></p>
+				<p class="aswer-p"><textarea class="aswer-textarea" name="${index}1" value="${sessionScope.stu_bct[1]}">${sessionScope.stu_bct[1]}</textarea></p>
 				<p>请输入分数：</p><input type="text"  name="${index}"/>
 				<c:set value="${index+1}" var="index"></c:set>
 				</div>
@@ -162,8 +162,9 @@
 				<div style="width:100%; height:20%; margin-top: 170px;">
 				<button  class = "btn1" id="preSubject" type="button" >上一题</button>
 				<button style="margin-left: 20px" class = "btn1" id="nextSubject" type="button">下一题</button>
+			
+			<button  style="margin-left: 20px" class = "btn1" type="submit" onclick="return confirm('确定提交吗?')">提交分数</button>
 			</div>
-			<button  class = "btn1" type="submit" onclick="return confirm('确定提交吗?')">提交试卷</button>
 			</form>
 			</div>
 				</div>

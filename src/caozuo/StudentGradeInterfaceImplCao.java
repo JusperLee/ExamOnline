@@ -27,7 +27,7 @@ public class StudentGradeInterfaceImplCao implements StudentGradeInterfaceCao {
 		int row=0;
         con=DBUtil.getConnection();
         System.out.println(studentGrade.getPaperId());
-        String sql="insert into studentgrade (stu_number,Xztscore,Tktscore,Pdtscore,Jdtscore,Bctscore,score,Papername,paperid)values (?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into studentgrade (stu_number,stu_name,Xztscore,Tktscore,Pdtscore,Jdtscore,Bctscore,score,Papername,paperid)values (?,?,?,?,?,?,?,?,?,?)";
         try {
 			pr=con.prepareStatement(sql);
 			pr.setString(1, studentGrade.getUserId());
